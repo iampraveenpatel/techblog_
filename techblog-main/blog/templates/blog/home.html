@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}TECH BLOG{% endblock title %}
+
+{% block content %}
+<div class="container my-1">
+    <h1 class="text-center alert alert-primary">TECH BLOG HOME PAGE</h1>
+    <div class="row">
+        {% for blog in blogs|dictsortreversed:"created_at" %}
+        <!-- Use dictsortreversed to sort blogs by created_at in descending order -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card bg-dark text-white">
+                <div class="card-body">
+                    <h6 class="card-title display-4 font-weight-bold text-warning">{{ blog.title }}</h6>
+                    <p class="card-text lead">{{ blog.cont }}</p>
+                    <strong class="text-success">AUTHOR: {{ blog.author|upper }}</strong>
+                    <br>
+                    <strong class="text-primary">{{ blog.created_at }}</strong>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

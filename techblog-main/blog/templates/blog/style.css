@@ -1,0 +1,32 @@
+.navbar {
+    background-color: #007bff !important; /* Primary blue background */
+    padding: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffcc00 !important; /* Gold color */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* White color */
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00 !important; /* Gold color on hover */
+}
+
+.nav-item.active .nav-link {
+    color: #ffcc00 !important; /* Gold color for active link */
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}BLOGS{% endblock title %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="col-sm-10">
+        <h2 class="text-center alert alert-primary">PROFILE</h2>
+        <strong>WELCOME | {{full_name|upper  }}</strong>
+        <a class="btn btn-info" href="{% url 'changepwd' %}">CHANGE PASSWORD</a>
+        <a class="btn btn-info" href="{% url 'updateprofile' %}">UPDATE PROFILE</a>
+    <div>
+  </div>
+{% endblock content %}

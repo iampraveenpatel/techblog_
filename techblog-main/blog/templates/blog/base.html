@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/blog/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/blog/css/style.css">
+</head>
+<body>
+    <div class="container-fluid bg-primary text-light py-3">
+        {% include "blog/navbar.html" %}
+    </div>
+    <div class="container bg-light py-4">
+        <div class="row">
+            <div class="col-sm-12">
+                {% block msg %}{% endblock msg %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 bg-primary text-white py-3 d-flex align-items-center justify-content-center">
+                {% block side %}
+                <img src="/static/blog/images/pp.jpg" class="img-fluid mb-3" alt="Sidebar Image">
+                <!-- Add additional sidebar content here -->
+                {% endblock side %}
+            </div>
+            <div class="col-md-9 py-3">
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+    </div>
+    <script src="/static/blog/js/jquery.js"></script>
+    <script src="/static/blog/js/popper.js"></script>
+    <script src="/static/blog/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}BLOGS{% endblock title %}
+
+{% block msg %}
+    {% if messages %}
+        {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show" {% endif %}>
+                <strong>{{ message }}</strong>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock msg %}
+
+{% block side %}
+<div class="col-lg-3 col-md-4 sidebar my-5 text-center">
+    <h3 class="my-10">Welcome</h3>
+    <h5>{{ full_name|upper }}</h5> <!-- Apply the upper filter here -->
+    <img src="{{ profile_image }}" class="img-fluid rounded-circle" style="width: 300%; max-width: 200px;" alt="User Image">
+    {% for group in groups %}
+        <p>{{ group.name }}</p>
+    {% endfor %}
+</div>
+{% endblock side %}
+
+{% block content %}
+    <div class="col-lg-9 col-md-8 my-5">
+        <h2 class="text-center mb-4">Dashboard</h2>
+        <div class="text-right mb-3">
+            <a class="btn btn-success" href="{% url 'addblog' %}">Add A Blog</a>
+        </div>
+
+        <p>Total blogs: {{ blogs.count }}</p>
+
+        {% if blogs %}
+            <div class="row">
+                {% for blg in blogs %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ blg.title }}</h5>
+                                <p class="card-text">{{ blg.cont }}</p>
+                                <p class="card-text"><small class="text-muted">Created on {{ blg.created_at }}</small></p>
+                                <div class="text-right">
+                                    <a href="{% url 'updateblog' blg.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <form action='{% url "deleteblog" blg.id %}' method="post" class="d-inline">
+                                        {% csrf_token %}
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h4 class="text-center alert alert-warning">NO Records!</h4>
+        {% endif %}
+    </div>
+{% endblock content %}
